@@ -1,0 +1,32 @@
+version: '3'
+services:
+  client:
+    build: client
+    ports:
+      - '4200:4200'
+      - '49152:49152'
+    volumes:
+      - './client/src:/home/app/client/src'
+    env_file: .env
+    command: npm start
+  express:
+    build: server
+    ports:
+      - '3000:3000'
+    volumes:
+      - './server/routes:/home/app/server/routes'
+    depends_on:
+      - postgres
+    env_file: .env
+    command: npm start
+  postgres:
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DATABASE=demo
+      - POSTGRES_PASSWORD=qwerty1234
+    image: 'postgres:latest'
+    container_name: 'postgres'
+    ports:
+      - '5432:5432'
+    volumes:
+      - './util/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh'

@@ -1,0 +1,33 @@
+version: '3'
+services:
+  client:
+    build:
+      context: client
+      dockerfile: Dockerfile-prod
+    image: 'client_prod'
+    volumes:
+      - '/opt/client:/home/app/client/dist'
+    env_file: prod.env
+    command: npm run build
+  express:
+    build: express
+    ports:
+      - '80:3000'
+    volumes:
+      - '/opt/client:/home/app/server/public'
+    depends_on:
+      - client
+      - postgres
+    env_file: prod.env
+    command: [pm2-docker, /home/app/server/bin/www]
+  postgres:
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_DATABASE=demo
+        - POSTGRES_PASSWORD=qwerty1234
+      image: 'postgres:latest'
+      container_name: 'postgres'
+      ports:
+        - '5432:5432'
+      volumes:
+        - './util/initdb.sh:/docker-entrypoint-initdb.d/initdb.sh'
