@@ -31,6 +31,8 @@ A volume is linked to the `client/src` directory for local development.
 
 This runs using `nodemon` to provide livereload. A volume is link to the `express/routes` directory for local development.
 
+Try `http://localhost:3000/api/` to see hello world response.
+
 ### Postgres
 
 Redis is available on port 5432 for local queries.
