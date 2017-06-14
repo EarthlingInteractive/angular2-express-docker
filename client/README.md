@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Code scaffolding
 
-Run `docker exec -it client ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+Run `docker exec -it client ng generate component component-name` to generate a new component. You can also use `docker exec -it client ng generate directive|pipe|service|class|module`.
 
 ## Build
 
