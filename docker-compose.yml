@@ -7,7 +7,7 @@ services:
       - '4200:4200'
       - '49152:49152'
     volumes:
-      - './client/src:/home/app/client/src'
+      - './client:/home/app/client'
     env_file: .env
     command: npm start
   server:
