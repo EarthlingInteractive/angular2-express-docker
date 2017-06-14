@@ -1,6 +1,7 @@
-version: '3'
+version: '2'
 services:
   client:
+    container_name: 'client'
     build: client
     ports:
       - '4200:4200'
@@ -9,7 +10,8 @@ services:
       - './client/src:/home/app/client/src'
     env_file: .env
     command: npm start
-  express:
+  server:
+    container_name: 'server'
     build: server
     ports:
       - '3000:3000'
