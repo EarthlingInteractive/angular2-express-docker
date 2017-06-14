@@ -47,10 +47,18 @@ docker exec -it client npm install --save-dev @types/newModule
 
 ### Express
 
-This runs using `nodemon` to provide livereload. A volume is link to the `express/routes` directory for local development.
+This runs using `nodemon` to provide livereload. A volume is link to the `server` directory for local development.
 
 Try `http://localhost:3000/api/` to see hello world response.
 
+#### Adding npm modules
+
+In order to properly add modules into the interactive environment, you need to run npm through the container like the following:
+
+```
+docker exec -it server npm install --save newModule
+```
+
 ### Postgres
 
-Redis is available on port 5432 for local queries.
+Postgres is available on port 5432 for local queries. See the `docker-compose.yml` for credentials.

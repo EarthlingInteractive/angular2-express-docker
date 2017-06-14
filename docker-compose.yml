@@ -17,7 +17,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - './server/routes:/home/app/server/routes'
+      - './server:/home/app/server'
     depends_on:
       - postgres
     env_file: .env
